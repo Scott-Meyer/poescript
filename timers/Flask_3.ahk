@@ -10,6 +10,7 @@ Gui, -MaximizeBox -MinimizeBox
 
 global toggle = false
 global timer
+global randomizer
 
 Gui, Add, Edit, x0 y0 w70 h20 -VScroll -WantReturn Number Limit5 +Center vflaskTimer3,
 Gui, Add, Button, x69 y-1 w32 h22 gOK, OK
@@ -45,7 +46,8 @@ runTimer3() {
 	if (WinActive("ahk_class POEWindowClass")) {
 		while (toggle) {
 			Send, 3
-			Sleep, %timer%
+			Random, rand, %timer% - 1500, %timer% + 1500
+			Sleep, %rand%
 		}
 	}
 }
